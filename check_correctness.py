@@ -26,7 +26,8 @@ for file in files:
 
         if file == "sequential.cpp":
            # Compile the file with the current matrix configuration
-            subprocess.run(["g++", "-O3", "-std=c++11", "-o", "program", "-DMAT_N=" + str(mat_n), file])
+            subprocess.run(["g++", "-O3", "-std=c++11", "-o",
+                           "program", "-DDEBUG=1", "-DMAT_N=" + str(mat_n), file])
 
             with open(f"out/{filename}_{mat_n}.txt", 'w') as f:
                 subprocess.run(["./program"], stdout=f)
@@ -39,14 +40,16 @@ for file in files:
                 
                 if "mpi" in filename:
                     # Compile the file with the current matrix configuration and thread count
-                    subprocess.run(["mpic++", "-O3", "-std=c++11", "-o", "program", "-DMAT_N=" + str(mat_n), "-DTHREADS=" + str(thread), file])
+                    subprocess.run(["mpic++", "-O3", "-std=c++11", "-o", "program", "-DDEBUG=1",
+                                   "-DMAT_N=" + str(mat_n), "-DTHREADS=" + str(thread), file])
             
                     with open(f"out/{filename}_{mat_n}_{thread}.txt", 'w') as f:
                         subprocess.run(["mpirun", "-np", str(thread), "./program"], stdout=f)
             
                 else:
                     # Compile the file with the current matrix configuration and thread count
-                    subprocess.run(["g++", "-O3", "-std=c++11", "-lpthread", "-o", "program", "-DMAT_N=" + str(mat_n), "-DTHREADS=" + str(thread), file])
+                    subprocess.run(["g++", "-O3", "-std=c++11", "-lpthread", "-o", "program",
+                                   "-DDEBUG=1", "-DMAT_N=" + str(mat_n), "-DTHREADS=" + str(thread), file])
 
                     # Run the program and store the output
                     # subprocess.run(["./program", ">", f"{filename}_{mat_n}_{thread}.txt"])

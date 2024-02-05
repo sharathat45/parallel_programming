@@ -132,7 +132,9 @@ int main()
     }
 
     Eliminate(A);
-
+    
+#if DEBUG == 1
     printMatrix(A);
+#endif
     return 0;
 }

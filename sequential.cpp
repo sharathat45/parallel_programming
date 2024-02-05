@@ -88,9 +88,7 @@ int main()
             A[i][j] = distrib(gen);
         }
     }
-    // printMatrix(A);
-    // cout<<'\n';
-
+    
     struct timespec start, end;
     double elapsed_time;
 
@@ -103,7 +101,9 @@ int main()
     elapsed_time *= 1000;                                         // Convert to milliseconds
     cout << elapsed_time << endl;                            // Convert to milliseconds
 
+#if DEBUG == 1
     printMatrix(A);
+#endif
 
     return 0;
 }

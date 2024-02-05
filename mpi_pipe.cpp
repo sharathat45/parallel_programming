@@ -94,10 +94,12 @@ int main()
     elapsed_time *= 1000;                                         // Convert to milliseconds
     cout << "Elapsed Time: " << elapsed_time << endl;             // Convert to milliseconds
 
+#if DEBUG == 1
     if (tid == 0)
     {
         printMatrix(A);
     }
+#endif
 
     MPI_Finalize();
     

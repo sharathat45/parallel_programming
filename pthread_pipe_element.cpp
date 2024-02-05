@@ -161,6 +161,9 @@ int main()
 
     Eliminate(A);
    
-    // printMatrix(A);
+#if DEBUG==1
+    printMatrix(A);
+#endif
+
     return 0;
 }
