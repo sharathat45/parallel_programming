@@ -2,7 +2,7 @@
 
 This project includes both broadcast and pipelining versions.
 
-Each version is timed and speedup results with respect to the sequential program are placed in `/out/output.txt` using the script `run.py`.
+Each version is timed and speedup results with respect to the sequential program are placed in `/out/output.txt` using the script `run_all.py`.
 
 ```bash
 python3 run_all.py
