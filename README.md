@@ -19,6 +19,11 @@ make mpi
 make pthread_pipe
 make mpi_pipe
 ```
+To change matrix size change `-DMAT_N=n` in makefile rule, where n is matriz size (nxn).
+
+To change thread count change `-DTHREADS=n` in makefile rule, where n is number of threads.
+
+
 
 ## Checking correctness of parallel programme
 To check the correctness of the code, use check_correctness.py which executes both the sequential and parallel code and places the output matrix in /out/*.txt. These can then be diffed with sequential.txt.
