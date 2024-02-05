@@ -26,7 +26,7 @@ To change thread count change `-DTHREADS=n` in makefile rule, where n is number 
 
 
 ## Checking correctness of parallel programme
-To check the correctness of the code, use check_correctness.py which executes both the sequential and parallel code and places the output matrix in /out/*.txt. These can then be diffed with sequential.txt.
+To check the correctness of the code, use `check_correctness.py` which executes both the sequential and parallel code and places the output matrix in `/out/*.txt`. These can then be diffed with sequential.txt.
 
 ```bash
 python3 check_correctness.py
