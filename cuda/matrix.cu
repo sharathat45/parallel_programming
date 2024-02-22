@@ -15,9 +15,7 @@ void MatrixMulKernel(float* M, float* N, float* P, int Width)
   int Col = bx * blockDim.x + tx;
   float Pvalue = 0;
 
-  // Loop over the M and N tiles required to compute the P element
   for (int p = 0; p < Width/TILE_WIDTH; ++p) {
-    // Collaborative loading of M and N tiles into shared memory
     ds_M[ty][tx] = M[Row*Width + p*TILE_WIDTH+tx];
     ds_N[ty][tx] = N[(p*TILE_WIDTH+ty)*Width + Col];
 
@@ -31,6 +29,7 @@ void MatrixMulKernel(float* M, float* N, float* P, int Width)
 }
 
 
+
 int main()
 {
   const int size = 1024;
@@ -38,14 +37,14 @@ int main()
   float* N = new float[size*size];
   float* P = new float[size*size];
 
-  for (int i = 0; i < size*size; i++) {
-    M[i] = 5.0;
-    N[i] = 5.0;
-  }
-
   cudaMallocManaged(&M, size*size*sizeof(float));
   cudaMallocManaged(&N, size*size*sizeof(float));
   cudaMallocManaged(&P, size*size*sizeof(float));
+
+  for (int i = 0; i < size*size; i++) {
+    M[i] = 1.0;
+    N[i] = 1.0;
+  }
 
   dim3 DimGrid(ceil(size/TILE_WIDTH), ceil(size/TILE_WIDTH), 1);
   dim3 DimBlock(TILE_WIDTH, TILE_WIDTH, 1);
@@ -58,5 +57,4 @@ int main()
   cudaFree(M);
   cudaFree(N);
   cudaFree(P);
-
 }

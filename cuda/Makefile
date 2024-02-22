@@ -1,4 +1,4 @@
-BASE_NAME = matrix
+BASE_NAME = monte_carlo
 EXECUTABLE = $(BASE_NAME)
 SRC_C = $(BASE_NAME).cu
 SRC_H = $(BASE_NAME).h
@@ -12,6 +12,6 @@ CC = nvcc
 all: saxpy simple
 
 clean:
-	rm -f *.bin *.o *.out saxpy simple matrix
+	rm -f *.bin *.o *.out saxpy simple matrix monte_carlo
 
 .PHONY: clean
